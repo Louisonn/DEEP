@@ -9,7 +9,8 @@
 #define PIN_H_
 #include "macro_types.h"
 
-void PIN_init(void);
-bool_e PIN_add(int * newPin);
+void pinInit(void);
+bool_e pinAdd(int * newPin);
+bool_e pinUse(int * newPin);
 
 #endif /* PIN_H_ */

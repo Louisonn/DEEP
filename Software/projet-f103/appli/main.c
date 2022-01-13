@@ -13,8 +13,11 @@
 #include "macro_types.h"
 #include "systick.h"
 #include "tft_ili9341/stm32f1_ili9341.h"
+#include "tft_ili9341/stm32f1_xpt2046.h"
 #include "PIN.h"
+#include "screen.h"
 
+static void state_machine(void);
 
 void writeLED(bool_e b)
 {
@@ -41,16 +44,16 @@ void process_ms(void)
 int main(void)
 {
 	//Initialisation de la couche logicielle HAL (Hardware Abstraction Layer)
-	//Cette ligne doit rester la première étape de la fonction main().
+	//Cette ligne doit rester la premiï¿½re ï¿½tape de la fonction main().
 	HAL_Init();
 
 
-	//Initialisation de l'UART2 à la vitesse de 115200 bauds/secondes (92kbits/s) PA2 : Tx  | PA3 : Rx.
-		//Attention, les pins PA2 et PA3 ne sont pas reliées jusqu'au connecteur de la Nucleo.
-		//Ces broches sont redirigées vers la sonde de débogage, la liaison UART étant ensuite encapsulée sur l'USB vers le PC de développement.
+	//Initialisation de l'UART2 ï¿½ la vitesse de 115200 bauds/secondes (92kbits/s) PA2 : Tx  | PA3 : Rx.
+		//Attention, les pins PA2 et PA3 ne sont pas reliï¿½es jusqu'au connecteur de la Nucleo.
+		//Ces broches sont redirigï¿½es vers la sonde de dï¿½bogage, la liaison UART ï¿½tant ensuite encapsulï¿½e sur l'USB vers le PC de dï¿½veloppement.
 	UART_init(UART2_ID,115200);
 
-	//"Indique que les printf sortent vers le périphérique UART2."
+	//"Indique que les printf sortent vers le pï¿½riphï¿½rique UART2."
 	SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
 
 	//Initialisation du port de la led Verte (carte Nucleo)
@@ -59,7 +62,7 @@ int main(void)
 
 	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_12, GPIO_MODE_INPUT,GPIO_NOPULL,GPIO_SPEED_FREQ_HIGH);
 
-	//On ajoute la fonction process_ms à la liste des fonctions appelées automatiquement chaque ms par la routine d'interruption du périphérique SYSTICK
+	//On ajoute la fonction process_ms ï¿½ la liste des fonctions appelï¿½es automatiquement chaque ms par la routine d'interruption du pï¿½riphï¿½rique SYSTICK
 	Systick_add_callback_function(&process_ms);
 
 
@@ -81,35 +84,32 @@ int main(void)
 
 
 
-	while(1)	//boucle de tâche de fond
+	while(1)	//boucle de tï¿½che de fond
 	{
 
 		writeLED(!HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12));
+		state_machine();
 
 	}
 }
 
 static void state_machine(void)
 {
-	typedef enum
-	{
-		INIT,
-		UNLOCKED,
-		PIN_MODIFYING,
-		LOCKED,
-		PIN_ENTERING
-	}state_e;
-	static state_e state = INIT;
-	static state_e previous_state = INIT;
-	bool_e entrance = (state!=previous_state)?TRUE:FALSE;	//ce booléen sera vrai seulement 1 fois après chaque changement d'état.
-	previous_state = state;									//previous_state mémorise l'état actuel (qui est le futur état précédent)
+
+	static screen_mode_e state = INIT;
+	static screen_mode_e previous_state = INIT;
+	bool_e entrance = (state!=previous_state)?TRUE:FALSE;	//ce boolï¿½en sera vrai seulement 1 fois aprï¿½s chaque changement d'ï¿½tat.
+	previous_state = state;									//previous_state mï¿½morise l'ï¿½tat actuel (qui est le futur ï¿½tat prï¿½cï¿½dent)
 
 
 
-	switch(state)
-	{
+
+	uint8_t currentPin[4] = {-1,-1,-1,-1};
+
+
+	switch(state){
 		case INIT:
-			PIN_init();
+			pinInit();
 			//LOCK_init();
 			//SCREEN_init();
 			//TACTILE_init();
@@ -117,42 +117,55 @@ static void state_machine(void)
 			state = UNLOCKED;
 			break;
 		case UNLOCKED:
-			if(entrance){
-				writeLED(0);	//UNLOCKING;
-			}
-			else if(newUser()){
-				state = PIN_MODIFYING;
-			}
-			break;
-		case PIN_MODIFYING:{
-			int myNewPin[4] = {0, 1, 2, 3};
-			int action = PIN_add(myNewPin);
-			if(action == 0){		// 0 signifie cancel pour l'instant
-				state = UNLOCKED;	// Echec de la procédure
-			}
-			if(action == 1){	// PIN is validated
-				state = LOCKED;
-			}
-			break;}
-		case LOCKED:
-			if(entrance){
-				writeLED(1);		//LOCKING
-			}
-			if(recovering()){	// On demande si l'utilisateur veux recuperer son bien (entrer le PIN)
-				state = PIN_ENTERING;
+			{
+				if(screenMain(state) == TOUCHED){
+					state = SETPIN;
+				}
 			}
 			break;
-		case PIN_ENTERING:
-			int action = 0;
-			if(action == 0){		// 0 signifie cancel pour l'instant
-				state = LOCKED;	// Echec de la procédure
-			}
-			if(action == 1){	// PIN is accepted
+		case SETPIN:
+		{
+			switch(screenMain(state)){
+			case CANCEL:
 				state = UNLOCKED;
+				break;
+			case NEWPIN:
+				pinAdd(screenGetPin());
+				break;
+			default:
+				break;
 			}
-			break;
 
+		}
+			break;
+		case LOCKED:
+		{
+			if(screenMain(state) == TOUCHED)
+			{
+				state = SETPIN;
+			}
+		}
+			break;
+		case ENTERPIN:
+		{
+			switch(screenMain(state)){
+			case CANCEL:
+				state = LOCKED;
+				break;
+			case NEWPIN:
+				pinUse(screenGetPin());
+				break;
+			default:
+				break;
+			}
+
+		}
+			break;
 		default:
+		{
+
+		}
 			break;
 	}
+
 }

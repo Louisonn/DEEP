@@ -13,7 +13,7 @@
             			
             <provider copy-of="extension" id="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser"/>
             			
-            <provider class="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" console="false" env-hash="1033094279520785834" id="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" keep-relative-paths="false" name="MCU ARM GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
+            <provider class="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" console="false" env-hash="-1287725956534517749" id="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" keep-relative-paths="false" name="MCU ARM GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
                 				
                 <language-scope id="org.eclipse.cdt.core.gcc"/>
                 				
@@ -37,7 +37,7 @@
             			
             <provider copy-of="extension" id="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser"/>
             			
-            <provider class="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" console="false" env-hash="997476104033029360" id="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" keep-relative-paths="false" name="MCU ARM GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
+            <provider class="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" console="false" env-hash="-1327821855034982523" id="com.st.stm32cube.ide.mcu.toolchain.armnone.setup.CrossBuiltinSpecsDetector" keep-relative-paths="false" name="MCU ARM GCC Built-in Compiler Settings" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;" prefer-non-shared="true">
                 				
                 <language-scope id="org.eclipse.cdt.core.gcc"/>
                 				

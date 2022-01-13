@@ -14,24 +14,19 @@
 static int* pins[PIN_MAX_NUMBER];
 
 
-typedef struct
-{
-	int a;
-}myStruct;
-uint32_t
 
 
-void PIN_init(){
+void pinInit(void){
 	int default_pin_code[] = DEFAULT_PIN_CODE;
-	PIN_add(default_pin_code);
+	pinAdd(default_pin_code);
 
 }
 
-bool_e PIN_add(int * newPin){
+bool_e pinAdd(int * newPin){
 	uint8_t i;
 	for(i = 0; i<PIN_MAX_NUMBER; i++)
 		{
-			if(!pins[i])	//On a trouvé une place libre ?
+			if(!pins[i])	//On a trouvï¿½ une place libre ?
 			{
 				pins[i] = newPin;
 				return TRUE;
@@ -39,6 +34,23 @@ bool_e PIN_add(int * newPin){
 		}
 		return FALSE;	//Pas de place libre !
 
+}
+
+bool_e pinUse(int * pin){
+	uint8_t i;
+	for(i = 0; i<PIN_MAX_NUMBER; i++)
+		{
+		uint8_t matches = 0;
+			for (uint8_t y = 0; y<4; y++){
+				if(pin[y] == pins[i][y]){
+					matches++;
+				}
+			}
+		if(matches == 4){
+			return TRUE;
+		}
+		}
+		return FALSE;	//Pas de place libre !
 }
 
 

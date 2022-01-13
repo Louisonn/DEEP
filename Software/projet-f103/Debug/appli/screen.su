@@ -1,0 +1,2 @@
+screen.c:10:16:screenMain	16	static
+screen.c:19:7:screenGetPin	4	static
