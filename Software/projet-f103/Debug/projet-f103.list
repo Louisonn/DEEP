@@ -23,23 +23,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   9 .ARM.attributes 00000029  00000000  00000000  000209d8  2**0
                   CONTENTS, READONLY
- 10 .debug_info   0001cb68  00000000  00000000  00020a01  2**0
+ 10 .debug_info   0001cb80  00000000  00000000  00020a01  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 11 .debug_abbrev 00004c2f  00000000  00000000  0003d569  2**0
+ 11 .debug_abbrev 00004c2f  00000000  00000000  0003d581  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 12 .debug_aranges 00001438  00000000  00000000  00042198  2**3
+ 12 .debug_aranges 00001438  00000000  00000000  000421b0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_ranges 00001280  00000000  00000000  000435d0  2**3
+ 13 .debug_ranges 00001280  00000000  00000000  000435e8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_macro  0001bad7  00000000  00000000  00044850  2**0
+ 14 .debug_macro  0001bad7  00000000  00000000  00044868  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_line   0001833e  00000000  00000000  00060327  2**0
+ 15 .debug_line   00018340  00000000  00000000  0006033f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_str    00083458  00000000  00000000  00078665  2**0
+ 16 .debug_str    00083458  00000000  00000000  0007867f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .comment      00000053  00000000  00000000  000fbabd  2**0
+ 17 .comment      00000053  00000000  00000000  000fbad7  2**0
                   CONTENTS, READONLY
- 18 .debug_frame  000067e0  00000000  00000000  000fbb10  2**2
+ 18 .debug_frame  000067e0  00000000  00000000  000fbb2c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1541,12 +1541,11 @@ static void state_machine(void)
 
 
 
-
-	uint8_t currentPin[4] = {-1,-1,-1,-1};
+	int8_t currentPin[4] = {-1,-1,-1,-1};
  8000ff2:	f04f 33ff 	mov.w	r3, #4294967295
  8000ff6:	603b      	str	r3, [r7, #0]
-
-
+	UNUSED(currentPin);
+	(void)entrance;
 	switch(state){
  8000ff8:	4b33      	ldr	r3, [pc, #204]	; (80010c8 <state_machine+0xf8>)
  8000ffa:	781b      	ldrb	r3, [r3, #0]
@@ -1574,7 +1573,6 @@ static void state_machine(void)
 			break;
  8001026:	e04a      	b.n	80010be <state_machine+0xee>
 		case UNLOCKED:
-			{
 				if(screenMain(state) == TOUCHED){
  8001028:	4b27      	ldr	r3, [pc, #156]	; (80010c8 <state_machine+0xf8>)
  800102a:	781b      	ldrb	r3, [r3, #0]
@@ -1588,12 +1586,10 @@ static void state_machine(void)
  800103a:	2202      	movs	r2, #2
  800103c:	701a      	strb	r2, [r3, #0]
 				}
-			}
 			break;
  800103e:	e03b      	b.n	80010b8 <state_machine+0xe8>
 		case SETPIN:
-		{
-			switch(screenMain(state)){
+			switch(screenMain(state))
  8001040:	4b21      	ldr	r3, [pc, #132]	; (80010c8 <state_machine+0xf8>)
  8001042:	781b      	ldrb	r3, [r3, #0]
  8001044:	4618      	mov	r0, r3
@@ -1624,12 +1620,9 @@ static void state_machine(void)
 				break;
  800106a:	bf00      	nop
 			}
-
-		}
 			break;
  800106c:	e027      	b.n	80010be <state_machine+0xee>
 		case LOCKED:
-		{
 			if(screenMain(state) == TOUCHED)
  800106e:	4b16      	ldr	r3, [pc, #88]	; (80010c8 <state_machine+0xf8>)
  8001070:	781b      	ldrb	r3, [r3, #0]
@@ -1644,11 +1637,9 @@ static void state_machine(void)
  8001080:	2202      	movs	r2, #2
  8001082:	701a      	strb	r2, [r3, #0]
 			}
-		}
 			break;
  8001084:	e01a      	b.n	80010bc <state_machine+0xec>
 		case ENTERPIN:
-		{
 			switch(screenMain(state)){
  8001086:	4b10      	ldr	r3, [pc, #64]	; (80010c8 <state_machine+0xf8>)
  8001088:	781b      	ldrb	r3, [r3, #0]
@@ -1680,14 +1671,9 @@ static void state_machine(void)
 				break;
  80010b0:	bf00      	nop
 			}
-
-		}
 			break;
  80010b2:	e004      	b.n	80010be <state_machine+0xee>
 		default:
-		{
-
-		}
 			break;
  80010b4:	bf00      	nop
  80010b6:	e002      	b.n	80010be <state_machine+0xee>

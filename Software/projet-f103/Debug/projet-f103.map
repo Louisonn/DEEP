@@ -15616,38 +15616,38 @@ LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_info     0x0000000000000000    0x1cb68
+.debug_info     0x0000000000000000    0x1cb80
  .debug_info    0x0000000000000000      0xa44 appli/PIN.o
- .debug_info    0x0000000000000a44      0xc8a appli/main.o
- .debug_info    0x00000000000016ce      0x9c7 appli/screen.o
- .debug_info    0x0000000000002095      0xf76 lib/bsp/stm32f1_extit.o
- .debug_info    0x000000000000300b      0x49f lib/bsp/stm32f1_gpio.o
- .debug_info    0x00000000000034aa     0x16fc lib/bsp/stm32f1_spi.o
- .debug_info    0x0000000000004ba6     0x1959 lib/bsp/stm32f1_sys.o
- .debug_info    0x00000000000064ff     0x183e lib/bsp/stm32f1_timer.o
- .debug_info    0x0000000000007d3d     0x1c08 lib/bsp/stm32f1_uart.o
- .debug_info    0x0000000000009945      0xdd6 lib/bsp/stm32f1_weak_it.o
- .debug_info    0x000000000000a71b      0x471 lib/bsp/system_stm32f1xx.o
- .debug_info    0x000000000000ab8c      0xd2e lib/bsp/systick.o
- .debug_info    0x000000000000b8ba      0xb8b lib/bsp/tft_ili9341/stm32f1_fonts.o
- .debug_info    0x000000000000c445     0x187c lib/bsp/tft_ili9341/stm32f1_ili9341.o
- .debug_info    0x000000000000dcc1      0x752 lib/hal/src/stm32f1xx_hal.o
- .debug_info    0x000000000000e413      0xbd0 lib/hal/src/stm32f1xx_hal_cortex.o
- .debug_info    0x000000000000efe3      0x812 lib/hal/src/stm32f1xx_hal_dma.o
- .debug_info    0x000000000000f7f5      0x6e5 lib/hal/src/stm32f1xx_hal_gpio.o
- .debug_info    0x000000000000feda      0xf05 lib/hal/src/stm32f1xx_hal_pcd.o
- .debug_info    0x0000000000010ddf      0x882 lib/hal/src/stm32f1xx_hal_rcc.o
- .debug_info    0x0000000000011661      0x474 lib/hal/src/stm32f1xx_hal_rcc_ex.o
- .debug_info    0x0000000000011ad5     0x16f9 lib/hal/src/stm32f1xx_hal_spi.o
- .debug_info    0x00000000000131ce      0x6d1 lib/hal/src/stm32f1xx_hal_spi_ex.o
- .debug_info    0x000000000001389f     0x12d2 lib/hal/src/stm32f1xx_hal_uart.o
- .debug_info    0x0000000000014b71     0x1609 lib/hal/src/stm32f1xx_ll_usb.o
- .debug_info    0x000000000001617a     0x1839 lib/middleware/MIDI/midi.o
- .debug_info    0x00000000000179b3     0x1c4d lib/middleware/MIDI/usbd_conf.o
- .debug_info    0x0000000000019600     0x12de lib/middleware/MIDI/usbd_core.o
- .debug_info    0x000000000001a8de     0x124b lib/middleware/MIDI/usbd_ctlreq.o
- .debug_info    0x000000000001bb29     0x101d lib/middleware/MIDI/usbd_ioreq.o
- .debug_info    0x000000000001cb46       0x22 lib/startup_stm32f103xb.o
+ .debug_info    0x0000000000000a44      0xca2 appli/main.o
+ .debug_info    0x00000000000016e6      0x9c7 appli/screen.o
+ .debug_info    0x00000000000020ad      0xf76 lib/bsp/stm32f1_extit.o
+ .debug_info    0x0000000000003023      0x49f lib/bsp/stm32f1_gpio.o
+ .debug_info    0x00000000000034c2     0x16fc lib/bsp/stm32f1_spi.o
+ .debug_info    0x0000000000004bbe     0x1959 lib/bsp/stm32f1_sys.o
+ .debug_info    0x0000000000006517     0x183e lib/bsp/stm32f1_timer.o
+ .debug_info    0x0000000000007d55     0x1c08 lib/bsp/stm32f1_uart.o
+ .debug_info    0x000000000000995d      0xdd6 lib/bsp/stm32f1_weak_it.o
+ .debug_info    0x000000000000a733      0x471 lib/bsp/system_stm32f1xx.o
+ .debug_info    0x000000000000aba4      0xd2e lib/bsp/systick.o
+ .debug_info    0x000000000000b8d2      0xb8b lib/bsp/tft_ili9341/stm32f1_fonts.o
+ .debug_info    0x000000000000c45d     0x187c lib/bsp/tft_ili9341/stm32f1_ili9341.o
+ .debug_info    0x000000000000dcd9      0x752 lib/hal/src/stm32f1xx_hal.o
+ .debug_info    0x000000000000e42b      0xbd0 lib/hal/src/stm32f1xx_hal_cortex.o
+ .debug_info    0x000000000000effb      0x812 lib/hal/src/stm32f1xx_hal_dma.o
+ .debug_info    0x000000000000f80d      0x6e5 lib/hal/src/stm32f1xx_hal_gpio.o
+ .debug_info    0x000000000000fef2      0xf05 lib/hal/src/stm32f1xx_hal_pcd.o
+ .debug_info    0x0000000000010df7      0x882 lib/hal/src/stm32f1xx_hal_rcc.o
+ .debug_info    0x0000000000011679      0x474 lib/hal/src/stm32f1xx_hal_rcc_ex.o
+ .debug_info    0x0000000000011aed     0x16f9 lib/hal/src/stm32f1xx_hal_spi.o
+ .debug_info    0x00000000000131e6      0x6d1 lib/hal/src/stm32f1xx_hal_spi_ex.o
+ .debug_info    0x00000000000138b7     0x12d2 lib/hal/src/stm32f1xx_hal_uart.o
+ .debug_info    0x0000000000014b89     0x1609 lib/hal/src/stm32f1xx_ll_usb.o
+ .debug_info    0x0000000000016192     0x1839 lib/middleware/MIDI/midi.o
+ .debug_info    0x00000000000179cb     0x1c4d lib/middleware/MIDI/usbd_conf.o
+ .debug_info    0x0000000000019618     0x12de lib/middleware/MIDI/usbd_core.o
+ .debug_info    0x000000000001a8f6     0x124b lib/middleware/MIDI/usbd_ctlreq.o
+ .debug_info    0x000000000001bb41     0x101d lib/middleware/MIDI/usbd_ioreq.o
+ .debug_info    0x000000000001cb5e       0x22 lib/startup_stm32f103xb.o
 
 .debug_abbrev   0x0000000000000000     0x4c2f
  .debug_abbrev  0x0000000000000000      0x24f appli/PIN.o
@@ -15918,91 +15918,91 @@ LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000001b225      0x459 lib/middleware/MIDI/usbd_ctlreq.o
  .debug_macro   0x000000000001b67e      0x459 lib/middleware/MIDI/usbd_ioreq.o
 
-.debug_line     0x0000000000000000    0x1833e
+.debug_line     0x0000000000000000    0x18340
  .debug_line    0x0000000000000000      0x543 appli/PIN.o
- .debug_line    0x0000000000000543      0xaa6 appli/main.o
- .debug_line    0x0000000000000fe9      0x4d7 appli/screen.o
- .debug_line    0x00000000000014c0      0xba1 lib/bsp/stm32f1_extit.o
- .debug_line    0x0000000000002061      0x7e4 lib/bsp/stm32f1_gpio.o
- .debug_line    0x0000000000002845      0xbe2 lib/bsp/stm32f1_spi.o
- .debug_line    0x0000000000003427      0xfe2 lib/bsp/stm32f1_sys.o
- .debug_line    0x0000000000004409      0xee6 lib/bsp/stm32f1_timer.o
- .debug_line    0x00000000000052ef      0xef4 lib/bsp/stm32f1_uart.o
- .debug_line    0x00000000000061e3      0xe9c lib/bsp/stm32f1_weak_it.o
- .debug_line    0x000000000000707f      0x856 lib/bsp/system_stm32f1xx.o
- .debug_line    0x00000000000078d5      0xa0a lib/bsp/systick.o
- .debug_line    0x00000000000082df      0x88b lib/bsp/tft_ili9341/stm32f1_fonts.o
- .debug_line    0x0000000000008b6a     0x120b lib/bsp/tft_ili9341/stm32f1_ili9341.o
- .debug_line    0x0000000000009d75      0xa4c lib/hal/src/stm32f1xx_hal.o
- .debug_line    0x000000000000a7c1      0xc3a lib/hal/src/stm32f1xx_hal_cortex.o
- .debug_line    0x000000000000b3fb      0xeaa lib/hal/src/stm32f1xx_hal_dma.o
- .debug_line    0x000000000000c2a5      0xaec lib/hal/src/stm32f1xx_hal_gpio.o
- .debug_line    0x000000000000cd91     0x10e5 lib/hal/src/stm32f1xx_hal_pcd.o
- .debug_line    0x000000000000de76      0xe60 lib/hal/src/stm32f1xx_hal_rcc.o
- .debug_line    0x000000000000ecd6      0x99e lib/hal/src/stm32f1xx_hal_rcc_ex.o
- .debug_line    0x000000000000f674     0x1e70 lib/hal/src/stm32f1xx_hal_spi.o
- .debug_line    0x00000000000114e4      0x7f6 lib/hal/src/stm32f1xx_hal_spi_ex.o
- .debug_line    0x0000000000011cda     0x17d8 lib/hal/src/stm32f1xx_hal_uart.o
- .debug_line    0x00000000000134b2      0xe93 lib/hal/src/stm32f1xx_ll_usb.o
- .debug_line    0x0000000000014345      0xac9 lib/middleware/MIDI/midi.o
- .debug_line    0x0000000000014e0e      0xd30 lib/middleware/MIDI/usbd_conf.o
- .debug_line    0x0000000000015b3e      0xd92 lib/middleware/MIDI/usbd_core.o
- .debug_line    0x00000000000168d0      0xfb1 lib/middleware/MIDI/usbd_ctlreq.o
- .debug_line    0x0000000000017881      0xa28 lib/middleware/MIDI/usbd_ioreq.o
- .debug_line    0x00000000000182a9       0x95 lib/startup_stm32f103xb.o
+ .debug_line    0x0000000000000543      0xaa8 appli/main.o
+ .debug_line    0x0000000000000feb      0x4d7 appli/screen.o
+ .debug_line    0x00000000000014c2      0xba1 lib/bsp/stm32f1_extit.o
+ .debug_line    0x0000000000002063      0x7e4 lib/bsp/stm32f1_gpio.o
+ .debug_line    0x0000000000002847      0xbe2 lib/bsp/stm32f1_spi.o
+ .debug_line    0x0000000000003429      0xfe2 lib/bsp/stm32f1_sys.o
+ .debug_line    0x000000000000440b      0xee6 lib/bsp/stm32f1_timer.o
+ .debug_line    0x00000000000052f1      0xef4 lib/bsp/stm32f1_uart.o
+ .debug_line    0x00000000000061e5      0xe9c lib/bsp/stm32f1_weak_it.o
+ .debug_line    0x0000000000007081      0x856 lib/bsp/system_stm32f1xx.o
+ .debug_line    0x00000000000078d7      0xa0a lib/bsp/systick.o
+ .debug_line    0x00000000000082e1      0x88b lib/bsp/tft_ili9341/stm32f1_fonts.o
+ .debug_line    0x0000000000008b6c     0x120b lib/bsp/tft_ili9341/stm32f1_ili9341.o
+ .debug_line    0x0000000000009d77      0xa4c lib/hal/src/stm32f1xx_hal.o
+ .debug_line    0x000000000000a7c3      0xc3a lib/hal/src/stm32f1xx_hal_cortex.o
+ .debug_line    0x000000000000b3fd      0xeaa lib/hal/src/stm32f1xx_hal_dma.o
+ .debug_line    0x000000000000c2a7      0xaec lib/hal/src/stm32f1xx_hal_gpio.o
+ .debug_line    0x000000000000cd93     0x10e5 lib/hal/src/stm32f1xx_hal_pcd.o
+ .debug_line    0x000000000000de78      0xe60 lib/hal/src/stm32f1xx_hal_rcc.o
+ .debug_line    0x000000000000ecd8      0x99e lib/hal/src/stm32f1xx_hal_rcc_ex.o
+ .debug_line    0x000000000000f676     0x1e70 lib/hal/src/stm32f1xx_hal_spi.o
+ .debug_line    0x00000000000114e6      0x7f6 lib/hal/src/stm32f1xx_hal_spi_ex.o
+ .debug_line    0x0000000000011cdc     0x17d8 lib/hal/src/stm32f1xx_hal_uart.o
+ .debug_line    0x00000000000134b4      0xe93 lib/hal/src/stm32f1xx_ll_usb.o
+ .debug_line    0x0000000000014347      0xac9 lib/middleware/MIDI/midi.o
+ .debug_line    0x0000000000014e10      0xd30 lib/middleware/MIDI/usbd_conf.o
+ .debug_line    0x0000000000015b40      0xd92 lib/middleware/MIDI/usbd_core.o
+ .debug_line    0x00000000000168d2      0xfb1 lib/middleware/MIDI/usbd_ctlreq.o
+ .debug_line    0x0000000000017883      0xa28 lib/middleware/MIDI/usbd_ioreq.o
+ .debug_line    0x00000000000182ab       0x95 lib/startup_stm32f103xb.o
 
 .debug_str      0x0000000000000000    0x83458
  .debug_str     0x0000000000000000     0x73ed appli/PIN.o
                                        0x75da (size before relaxing)
- .debug_str     0x00000000000073ed    0x748a1 appli/main.o
-                                      0x7bf73 (size before relaxing)
- .debug_str     0x000000000007bc8e       0x39 appli/screen.o
+ .debug_str     0x00000000000073ed    0x748aa appli/main.o
+                                      0x7bf83 (size before relaxing)
+ .debug_str     0x000000000007bc97       0x39 appli/screen.o
                                        0x75de (size before relaxing)
- .debug_str     0x000000000007bcc7      0x42e lib/bsp/stm32f1_extit.o
+ .debug_str     0x000000000007bcd0      0x42e lib/bsp/stm32f1_extit.o
                                       0x7becc (size before relaxing)
- .debug_str     0x000000000007c0f5       0xf1 lib/bsp/stm32f1_gpio.o
+ .debug_str     0x000000000007c0fe       0xf1 lib/bsp/stm32f1_gpio.o
                                       0x776e8 (size before relaxing)
- .debug_str     0x000000000007c1e6      0x570 lib/bsp/stm32f1_spi.o
+ .debug_str     0x000000000007c1ef      0x570 lib/bsp/stm32f1_spi.o
                                       0x7c098 (size before relaxing)
- .debug_str     0x000000000007c756     0x2045 lib/bsp/stm32f1_sys.o
+ .debug_str     0x000000000007c75f     0x2045 lib/bsp/stm32f1_sys.o
                                       0x7dc37 (size before relaxing)
- .debug_str     0x000000000007e79b      0x4d1 lib/bsp/stm32f1_timer.o
+ .debug_str     0x000000000007e7a4      0x4d1 lib/bsp/stm32f1_timer.o
                                       0x7c475 (size before relaxing)
- .debug_str     0x000000000007ec6c      0x343 lib/bsp/stm32f1_uart.o
+ .debug_str     0x000000000007ec75      0x343 lib/bsp/stm32f1_uart.o
                                       0x7c50b (size before relaxing)
- .debug_str     0x000000000007efaf      0x240 lib/bsp/stm32f1_weak_it.o
+ .debug_str     0x000000000007efb8      0x240 lib/bsp/stm32f1_weak_it.o
                                       0x7bde8 (size before relaxing)
- .debug_str     0x000000000007f1ef       0x65 lib/bsp/system_stm32f1xx.o
+ .debug_str     0x000000000007f1f8       0x65 lib/bsp/system_stm32f1xx.o
                                       0x776c0 (size before relaxing)
- .debug_str     0x000000000007f254       0xf5 lib/bsp/systick.o
+ .debug_str     0x000000000007f25d       0xf5 lib/bsp/systick.o
                                       0x7b8db (size before relaxing)
- .debug_str     0x000000000007f349       0x6b lib/bsp/tft_ili9341/stm32f1_fonts.o
+ .debug_str     0x000000000007f352       0x6b lib/bsp/tft_ili9341/stm32f1_fonts.o
                                       0x7a794 (size before relaxing)
- .debug_str     0x000000000007f3b4      0x841 lib/bsp/tft_ili9341/stm32f1_ili9341.o
+ .debug_str     0x000000000007f3bd      0x841 lib/bsp/tft_ili9341/stm32f1_ili9341.o
                                       0x7c7c4 (size before relaxing)
- .debug_str     0x000000000007fbf5      0x372 lib/hal/src/stm32f1xx_hal.o
+ .debug_str     0x000000000007fbfe      0x372 lib/hal/src/stm32f1xx_hal.o
                                       0x77cc5 (size before relaxing)
- .debug_str     0x000000000007ff67      0x244 lib/hal/src/stm32f1xx_hal_cortex.o
+ .debug_str     0x000000000007ff70      0x244 lib/hal/src/stm32f1xx_hal_cortex.o
                                       0x77cd3 (size before relaxing)
- .debug_str     0x00000000000801ab      0x21f lib/hal/src/stm32f1xx_hal_dma.o
+ .debug_str     0x00000000000801b4      0x21f lib/hal/src/stm32f1xx_hal_dma.o
                                       0x77a15 (size before relaxing)
- .debug_str     0x00000000000803ca      0x2fa lib/hal/src/stm32f1xx_hal_gpio.o
+ .debug_str     0x00000000000803d3      0x2fa lib/hal/src/stm32f1xx_hal_gpio.o
                                       0x779fe (size before relaxing)
- .debug_str     0x00000000000806c4      0x644 lib/hal/src/stm32f1xx_hal_pcd.o
+ .debug_str     0x00000000000806cd      0x644 lib/hal/src/stm32f1xx_hal_pcd.o
                                       0x77ce5 (size before relaxing)
- .debug_str     0x0000000000080d08      0x24e lib/hal/src/stm32f1xx_hal_rcc.o
+ .debug_str     0x0000000000080d11      0x24e lib/hal/src/stm32f1xx_hal_rcc.o
                                       0x77a37 (size before relaxing)
- .debug_str     0x0000000000080f56       0xa4 lib/hal/src/stm32f1xx_hal_rcc_ex.o
+ .debug_str     0x0000000000080f5f       0xa4 lib/hal/src/stm32f1xx_hal_rcc_ex.o
                                       0x777c4 (size before relaxing)
- .debug_str     0x0000000000080ffa      0x566 lib/hal/src/stm32f1xx_hal_spi.o
+ .debug_str     0x0000000000081003      0x566 lib/hal/src/stm32f1xx_hal_spi.o
                                       0x77f4a (size before relaxing)
- .debug_str     0x0000000000081560       0x3f lib/hal/src/stm32f1xx_hal_spi_ex.o
+ .debug_str     0x0000000000081569       0x3f lib/hal/src/stm32f1xx_hal_spi_ex.o
                                       0x77a02 (size before relaxing)
- .debug_str     0x000000000008159f      0x4d7 lib/hal/src/stm32f1xx_hal_uart.o
+ .debug_str     0x00000000000815a8      0x4d7 lib/hal/src/stm32f1xx_hal_uart.o
                                       0x77f0c (size before relaxing)
- .debug_str     0x0000000000081a76      0x2e3 lib/hal/src/stm32f1xx_ll_usb.o
+ .debug_str     0x0000000000081a7f      0x2e3 lib/hal/src/stm32f1xx_ll_usb.o
                                       0x77b2b (size before relaxing)
- .debug_str     0x0000000000081d59     0x1221 lib/middleware/MIDI/midi.o
+ .debug_str     0x0000000000081d62     0x1218 lib/middleware/MIDI/midi.o
                                       0x7d03c (size before relaxing)
  .debug_str     0x0000000000082f7a      0x172 lib/middleware/MIDI/usbd_conf.o
                                       0x7c67d (size before relaxing)
