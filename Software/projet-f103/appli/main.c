@@ -126,7 +126,7 @@ static void state_machine(void)
 		case SETPIN:
 		{
 			switch(screenMain(state)){
-			case CANCEL:
+					case CANCEL:
 				state = UNLOCKED;
 				break;
 			case NEWPIN:
