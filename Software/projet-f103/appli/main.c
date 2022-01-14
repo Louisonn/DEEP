@@ -103,7 +103,7 @@ static void state_machine(void)
 
 
 
-	int8_t currentPin[4] = {-1,-1,-1,-1};
+	int8_t currentPin[4] = {0};
 
 
 	UNUSED(currentPin);
@@ -121,36 +121,21 @@ static void state_machine(void)
 			state = UNLOCKED;
 			break;
 		case UNLOCKED:
-				if(screenMain(state) == TOUCHED){
+				if(screenMain(state, entrance) == TOUCHED){
 					state = SETPIN;
 				}
 			break;
 		case SETPIN:
-			switch(screenMain(state))
+			switch(screenMain(state,entrance))
 			{
 			case CANCEL:
 				state = UNLOCKED;
 				break;
 			case NEWPIN:
-				pinAdd(screenGetPin());
-				break;
-			default:
-				break;
-			}
-			break;
-		case LOCKED:
-			if(screenMain(state) == TOUCHED)
-			{
-				state = SETPIN;
-			}
-			break;
-		case ENTERPIN:
-			switch(screenMain(state)){
-			case CANCEL:
-				state = LOCKED;
-				break;
-			case NEWPIN:
-				pinUse(screenGetPin());
+				if(screenGetPin(currentPin)){
+					pinAdd(currentPin);
+
+				}
 				break;
 			default:
 				break;

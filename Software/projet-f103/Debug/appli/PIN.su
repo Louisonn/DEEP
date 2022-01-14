@@ -1,3 +1,3 @@
-PIN.c:19:6:pinInit	24	static
+PIN.c:19:6:pinInit	16	static
 PIN.c:25:8:pinAdd	24	static
 PIN.c:39:8:pinUse	24	static

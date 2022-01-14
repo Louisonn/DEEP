@@ -106,7 +106,7 @@ void XPT2046_demo(void)
 	{
 		static int16_t static_x,static_y;
 		int16_t x, y;
-
+b
 		if(XPT2046_getMedianCoordinates(&x, &y, XPT2046_COORDINATE_SCREEN_RELATIVE))
 		{
 			ILI9341_DrawCircle(static_x,static_y,15,ILI9341_COLOR_WHITE);

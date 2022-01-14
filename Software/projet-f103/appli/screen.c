@@ -7,15 +7,59 @@
 
 #include "screen.h"
 
-screen_event_e screenMain(screen_mode_e mode){
-	if(mode)
-	{
-		return TOUCHED;
+
+
+
+int8_t actualPin[4] = {-1,-1,-1,-1};
+bool_e isTouched = FALSE;
+bool_e newPinAvailable = FALSE;
+bool_e isCancelled = FALSE;
+
+
+screen_event_e screenMain(screen_mode_e state, bool_e entrance){
+
+	(void)entrance;
+
+	switch(state){
+	case UNLOCKED:
+		if(entrance){
+			//on unlock le verrou
+		}
+		if(isTouched){
+			return TOUCHED;
+		}
+		break;
+	case SETPIN:
+		if(entrance){
+			//affichage setpin menu
+		}
+		if(newPinAvailable){
+			return NEWPIN;
+		}
+		break;
+	default:
+		return NOTHING;
+		break;
 	}
-	return TOUCHED;
+	return NOTHING;
+
+
+
+}
+
+void screenCheck(){
+
 }
 
 
-int * screenGetPin(){
-	return 0;
+bool_e screenGetPin(int8_t * newPin){
+	for (uint8_t i = 0; i < 4; i++){
+		if(actualPin[i] == -1){
+			return FALSE;
+		}
+		else{
+			newPin[i] = actualPin[i];
+		}
+	}
+	return TRUE;
 }

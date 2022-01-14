@@ -2,7 +2,7 @@
  * PIN.h
  *
  *  Created on: 8 janv. 2022
- *      Author: porta
+ *      Author: Louison
  */
 
 #ifndef PIN_H_
@@ -10,7 +10,7 @@
 #include "macro_types.h"
 
 void pinInit(void);
-bool_e pinAdd(int * newPin);
-bool_e pinUse(int * newPin);
+bool_e pinAdd(int8_t * newPin);
+bool_e pinUse(int8_t * newPin);
 
 #endif /* PIN_H_ */

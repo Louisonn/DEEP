@@ -30,10 +30,10 @@ typedef enum
 
 
 
-screen_event_e screenMain(screen_mode_e);
+screen_event_e screenMain(screen_mode_e, bool_e);
 
 void screenCheck(void);
 
-int * screenGetPin(void);
+bool_e screenGetPin(int8_t *);
 
 #endif /* SCREEN_H_ */
