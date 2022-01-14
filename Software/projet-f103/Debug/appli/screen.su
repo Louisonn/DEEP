@@ -1,3 +1,3 @@
 screen.c:19:16:screenMain	16	static
 screen.c:50:6:screenCheck	4	static
-screen.c:55:8:screenGetPin	24	static
+screen.c:58:8:screenGetPin	24	static

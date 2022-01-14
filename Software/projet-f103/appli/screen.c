@@ -49,6 +49,9 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 
 void screenCheck(){
 
+	if(1){
+
+	}
 }
 
 

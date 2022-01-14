@@ -67,8 +67,9 @@ int main(void)
 
 
 
-
+/*
 	ILI9341_Init();
+	ILI9341_Rotate(ILI9341_Orientation_Portrait_2);
 	ILI9341_Fill(ILI9341_COLOR_WHITE);
 	ILI9341_DrawCircle(20,20,5,ILI9341_COLOR_BLUE);
 	ILI9341_DrawLine(20,20,100,20,ILI9341_COLOR_RED);
@@ -77,7 +78,7 @@ int main(void)
 	ILI9341_Puts(10,110,"hugo",&Font_11x18,ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
 	ILI9341_Puts(100,200, "hugo", &Font_11x18, ILI9341_COLOR_BROWN,
 	ILI9341_COLOR_WHITE);
-
+*/
 
 
 
@@ -86,8 +87,8 @@ int main(void)
 
 	while(1)	//boucle de t�che de fond
 	{
-
-		writeLED(!HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12));
+		XPT2046_demo();
+		writeLED(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12));
 		state_machine();
 
 	}

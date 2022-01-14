@@ -12,6 +12,7 @@
 
 
 static int8_t* pins[PIN_MAX_NUMBER];
+int8_t tableau[2] = {0};
 
 
 

@@ -7,6 +7,7 @@
 
 #ifndef SCREEN_H_
 #define SCREEN_H_
+#include "macro_types.h"
 
 #include "PIN.h"
 

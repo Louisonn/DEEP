@@ -1,4 +1,5 @@
 "appli/PIN.o"
+"appli/button.o"
 "appli/main.o"
 "appli/screen.o"
 "lib/bsp/iks01a1/hts221/HTS221_Driver.o"
