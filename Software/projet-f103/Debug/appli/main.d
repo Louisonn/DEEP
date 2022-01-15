@@ -29,7 +29,7 @@ appli/main.o: ../appli/main.c ../lib/hal/inc/stm32f1xx_hal.h \
  ../lib/bsp/tft_ili9341/stm32f1_ili9341.h \
  ../lib/bsp/tft_ili9341/stm32f1_fonts.h \
  ../lib/bsp/tft_ili9341/stm32f1_xpt2046.h ../appli/PIN.h \
- ../appli/screen.h
+ ../appli/screen.h ../appli/button.h
 
 ../lib/hal/inc/stm32f1xx_hal.h:
 
@@ -142,3 +142,5 @@ appli/main.o: ../appli/main.c ../lib/hal/inc/stm32f1xx_hal.h \
 ../appli/PIN.h:
 
 ../appli/screen.h:
+
+../appli/button.h:

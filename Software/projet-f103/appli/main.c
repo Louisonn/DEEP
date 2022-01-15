@@ -44,16 +44,16 @@ void process_ms(void)
 int main(void)
 {
 	//Initialisation de la couche logicielle HAL (Hardware Abstraction Layer)
-	//Cette ligne doit rester la premiï¿½re ï¿½tape de la fonction main().
+	//Cette ligne doit rester la premiére étape de la fonction main().
 	HAL_Init();
 
 
-	//Initialisation de l'UART2 ï¿½ la vitesse de 115200 bauds/secondes (92kbits/s) PA2 : Tx  | PA3 : Rx.
-		//Attention, les pins PA2 et PA3 ne sont pas reliï¿½es jusqu'au connecteur de la Nucleo.
-		//Ces broches sont redirigï¿½es vers la sonde de dï¿½bogage, la liaison UART ï¿½tant ensuite encapsulï¿½e sur l'USB vers le PC de dï¿½veloppement.
+	//Initialisation de l'UART2 é la vitesse de 115200 bauds/secondes (92kbits/s) PA2 : Tx  | PA3 : Rx.
+		//Attention, les pins PA2 et PA3 ne sont pas reliées jusqu'au connecteur de la Nucleo.
+		//Ces broches sont redirigées vers la sonde de débogage, la liaison UART étant ensuite encapsulée sur l'USB vers le PC de développement.
 	UART_init(UART2_ID,115200);
 
-	//"Indique que les printf sortent vers le pï¿½riphï¿½rique UART2."
+	//"Indique que les printf sortent vers le périphérique UART2."
 	SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
 
 	//Initialisation du port de la led Verte (carte Nucleo)
@@ -62,33 +62,17 @@ int main(void)
 
 	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_12, GPIO_MODE_INPUT,GPIO_NOPULL,GPIO_SPEED_FREQ_HIGH);
 
-	//On ajoute la fonction process_ms ï¿½ la liste des fonctions appelï¿½es automatiquement chaque ms par la routine d'interruption du pï¿½riphï¿½rique SYSTICK
+	//On ajoute la fonction process_ms é la liste des fonctions appelées automatiquement chaque ms par la routine d'interruption du périphérique SYSTICK
 	Systick_add_callback_function(&process_ms);
 
 
 
-/*
-	ILI9341_Init();
-	ILI9341_Rotate(ILI9341_Orientation_Portrait_2);
-	ILI9341_Fill(ILI9341_COLOR_WHITE);
-	ILI9341_DrawCircle(20,20,5,ILI9341_COLOR_BLUE);
-	ILI9341_DrawLine(20,20,100,20,ILI9341_COLOR_RED);
-	ILI9341_DrawLine(20,20,20,100,ILI9341_COLOR_RED);
-	ILI9341_Putc(110,11,'x',&Font_11x18,ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
-	ILI9341_Puts(10,110,"hugo",&Font_11x18,ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
-	ILI9341_Puts(100,200, "hugo", &Font_11x18, ILI9341_COLOR_BROWN,
-	ILI9341_COLOR_WHITE);
-*/
 
 
 
 
-
-
-	while(1)	//boucle de tï¿½che de fond
+	while(1)	//boucle de tache de fond
 	{
-		XPT2046_demo();
-		writeLED(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12));
 		state_machine();
 
 	}
@@ -96,29 +80,18 @@ int main(void)
 
 static void state_machine(void)
 {
-
 	static screen_mode_e state = INIT;
 	static screen_mode_e previous_state = INIT;
-	bool_e entrance = (state!=previous_state)?TRUE:FALSE;	//ce boolï¿½en sera vrai seulement 1 fois aprï¿½s chaque changement d'ï¿½tat.
-	previous_state = state;									//previous_state mï¿½morise l'ï¿½tat actuel (qui est le futur ï¿½tat prï¿½cï¿½dent)
+	bool_e entrance = (state!=previous_state)?TRUE:FALSE;	//ce booléen sera vrai seulement 1 fois aprés chaque changement d'état.
+	previous_state = state;									//previous_state mémorise l'état actuel (qui est le futur état précédent)
 
-
-
-	int8_t currentPin[4] = {0};
-
-
-	UNUSED(currentPin);
-	(void)entrance;
-
-
+	screenCheck(state);
 
 	switch(state){
 		case INIT:
 			pinInit();
 			//LOCK_init();
-			//SCREEN_init();
-			//TACTILE_init();
-			//Systick_add_callback_function(&process_ms);
+			screenInit();
 			state = UNLOCKED;
 			break;
 		case UNLOCKED:
@@ -133,10 +106,7 @@ static void state_machine(void)
 				state = UNLOCKED;
 				break;
 			case NEWPIN:
-				if(screenGetPin(currentPin)){
-					pinAdd(currentPin);
-
-				}
+				pinAdd(screenGetPin());
 				break;
 			default:
 				break;

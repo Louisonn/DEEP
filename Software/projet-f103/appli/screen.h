@@ -8,6 +8,9 @@
 #ifndef SCREEN_H_
 #define SCREEN_H_
 #include "macro_types.h"
+#include "tft_ili9341/stm32f1_ili9341.h"
+#include "tft_ili9341/stm32f1_xpt2046.h"
+#include "button.h"
 
 #include "PIN.h"
 
@@ -30,11 +33,9 @@ typedef enum
 
 
 
-
+void screenInit(void);
+void screenCheck(screen_mode_e);
 screen_event_e screenMain(screen_mode_e, bool_e);
-
-void screenCheck(void);
-
-bool_e screenGetPin(int8_t *);
+int8_t * screenGetPin(void);
 
 #endif /* SCREEN_H_ */
