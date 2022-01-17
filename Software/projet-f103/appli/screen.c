@@ -9,7 +9,7 @@
 
 
 
-int16_t x, y;
+
 int8_t actualPin[4] = {0};
 bool_e isTouched = FALSE;
 bool_e isCancelled = FALSE;
@@ -21,6 +21,8 @@ void screenInit(){
 	ILI9341_Init();
 	ILI9341_Rotate(ILI9341_Orientation_Portrait_2);
 	ILI9341_Fill(ILI9341_COLOR_GREEN);
+
+	XPT2046_init();
 }
 
 
@@ -30,7 +32,7 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 	case UNLOCKED:
 		if(entrance){
 			//on unlock le verrou
-			//et on affiche le menu locked
+			displayUNLOCKED();
 		}
 		if(isTouched){
 			return TOUCHED;
@@ -38,14 +40,30 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 		break;
 	case SETPIN:
 		if(entrance){
-			//affichage setpin menu
+			displaySETPIN();
+		}
+		if(actualPinIndex == 4){
+			return NEWPIN;
+		}
+		break;
+	case LOCKED:
+		if(entrance){
+			//on lock le verrou
+			displayLOCKED();
+		}
+		if(isTouched){
+			return TOUCHED;
+		}
+		break;
+	case ENTERPIN:
+		if(entrance){
+			displayENTERPIN();
 		}
 		if(actualPinIndex == 4){
 			return NEWPIN;
 		}
 		break;
 	default:
-		return NOTHING;
 		break;
 	}
 	return NOTHING;
@@ -55,15 +73,19 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 }
 
 
-void screenCheck(screen_mode_e state){
+void screenCheck(screen_mode_e state,uint32_t * pt ){
+	int16_t x, y;
 	isTouched = FALSE;
 	isCancelled = FALSE;
-	if(XPT2046_getMedianCoordinates(&x, &y, XPT2046_COORDINATE_SCREEN_RELATIVE)){
+	if(XPT2046_getMedianCoordinates(&x, &y, XPT2046_COORDINATE_SCREEN_RELATIVE) && !*pt){
 		switch(state){
 		case UNLOCKED:
 			isTouched = TRUE;
 			break;
-		case SETPIN:
+		case LOCKED:
+			isTouched = TRUE;
+			break;
+		default: // Here is for ENTER/SET PIN (AND INIT BUT HOPEFULLY NEVER)
 		{
 			button_state_t newButton = buttonFinder(x, y);
 			if(newButton.CANCELBUTTON){
@@ -75,17 +97,19 @@ void screenCheck(screen_mode_e state){
 			else if(actualPinIndex < 4){
 				actualPin[actualPinIndex] = newButton.BUTTONVALUE;
 				actualPinIndex++;
+
 			}
 		}
 			break;
-		default:
-			break;
 		}
+		*pt = 500;
 	}
 }
 
 
 int8_t * screenGetPin(){
+	actualPinIndex = 0;
+
 	return actualPin;
 }
 

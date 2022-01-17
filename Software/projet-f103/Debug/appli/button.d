@@ -24,7 +24,9 @@ appli/button.o: ../appli/button.c ../appli/button.h \
  ../lib/hal/inc/stm32f1xx_hal_wwdg.h ../lib/hal/inc/stm32f1xx_hal_pcd.h \
  ../lib/hal/inc/stm32f1xx_ll_usb.h ../lib/hal/inc/stm32f1xx_hal_pcd_ex.h \
  ../lib/hal/inc/stm32f1xx_hal_hcd.h \
- ../lib/bsp/tft_ili9341/stm32f1_fonts.h ../appli/config.h
+ ../lib/bsp/tft_ili9341/stm32f1_fonts.h ../appli/config.h \
+ ../appli/screen.h ../lib/bsp/tft_ili9341/stm32f1_xpt2046.h \
+ ../appli/PIN.h
 
 ../appli/button.h:
 
@@ -121,3 +123,9 @@ appli/button.o: ../appli/button.c ../appli/button.h \
 ../lib/bsp/tft_ili9341/stm32f1_fonts.h:
 
 ../appli/config.h:
+
+../appli/screen.h:
+
+../lib/bsp/tft_ili9341/stm32f1_xpt2046.h:
+
+../appli/PIN.h:

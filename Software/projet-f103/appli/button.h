@@ -9,6 +9,7 @@
 #define BUTTON_H_
 #include "macro_types.h"
 #include "tft_ili9341/stm32f1_ili9341.h"
+#include "screen.h"
 
 typedef struct{
 	bool_e NOBUTTON;

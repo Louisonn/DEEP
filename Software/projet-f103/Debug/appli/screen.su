@@ -1,5 +1,5 @@
 screen.c:20:6:screenInit	8	static
-screen.c:27:16:screenMain	16	static
-screen.c:58:6:screenCheck	32	static
-screen.c:88:10:screenGetPin	4	static
-screen.c:97:6:displayScreen	16	static
+screen.c:29:16:screenMain	16	static
+screen.c:76:6:screenCheck	32	static
+screen.c:110:10:screenGetPin	4	static
+screen.c:121:6:displayScreen	16	static

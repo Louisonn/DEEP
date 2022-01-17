@@ -34,7 +34,7 @@ typedef enum
 
 
 void screenInit(void);
-void screenCheck(screen_mode_e);
+void screenCheck(screen_mode_e, uint32_t*);
 screen_event_e screenMain(screen_mode_e, bool_e);
 int8_t * screenGetPin(void);
 
