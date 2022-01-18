@@ -23,8 +23,6 @@ static void state_machine(void);
 
 
 
-static int8_t * pins[PIN_MAX_NUMBER];
-
 
 void writeLED(bool_e b) {
 	HAL_GPIO_WritePin(LED_GREEN_GPIO, LED_GREEN_PIN, b);
@@ -84,7 +82,7 @@ static void state_machine(void) {
 	switch (state) {
 	case INIT:
 		screenInit();
-		pinInit(pins[]);
+		pinInit();
 		//LOCK_init();
 		state = UNLOCKED;
 		break;
@@ -99,8 +97,12 @@ static void state_machine(void) {
 			state = UNLOCKED;
 			break;
 		case NEWPIN: {
-
-			pinAdd(screenGetPin(), pins[]);
+			static int8_t newPin[4];
+			uint8_t i;
+			for(i = 0; i<4; i++){
+				newPin[i] = screenGetPin()[i];
+			}
+			pinAdd(newPin);
 			state = LOCKED;
 		}
 			break;
@@ -120,8 +122,7 @@ static void state_machine(void) {
 			state = LOCKED;
 			break;
 		case NEWPIN: {
-
-			if(pinUse(screenGetPin(), pins[])){
+			if(pinUse(screenGetPin())){
 				state = UNLOCKED;
 			}
 			else{

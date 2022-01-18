@@ -19,14 +19,18 @@ typedef struct {
 
 //Tableau de boutons
 //		NOBUTTON		CANCEL		VALUE	X1		Y1		X2		Y2
-static button_graphic_t buttons[NUMBER_BUTTONS] = { { { FALSE, FALSE, 0 }, 80,
-		240, 160, 320 }, { { FALSE, FALSE, 1 }, 0, 160, 80, 240 }, { { FALSE,
-		FALSE, 2 }, 80, 160, 160, 240 }, { { FALSE, FALSE, 3 }, 160, 160, 240,
-		240 }, { { FALSE, FALSE, 4 }, 0, 80, 80, 160 }, { { FALSE, FALSE, 5 },
-		80, 80, 160, 160 }, { { FALSE, FALSE, 6 }, 160, 80, 240, 160 }, { {
-		FALSE, FALSE, 7 }, 0, 0, 80, 80 },
-		{ { FALSE, FALSE, 8 }, 80, 0, 160, 80 }, { { FALSE, FALSE, 9 }, 160, 0,
-				240, 80 }, { { FALSE, TRUE, 0 }, 0, 240, 80, 320 } };
+static button_graphic_t buttons[NUMBER_BUTTONS] = {
+		{{FALSE,		FALSE,		0},		80,		240,	160,	320},
+		{{FALSE,		FALSE,		1},		0,		160,	80,		240},
+		{{FALSE,		FALSE,		2},		80,		160,	160,	240},
+		{{FALSE,		FALSE,		3},		160,	160,	240,	240},
+		{{FALSE,		FALSE,		4},		0,		80,		80,		160},
+		{{FALSE,		FALSE,		5},		80,		80,		160,	160},
+		{{FALSE,		FALSE,		6},		160,	80,		240,	160},
+		{{FALSE,		FALSE,		7},		0,		0,		80,		80},
+		{{FALSE,		FALSE,		8},		80,		0,		160,	80},
+		{{FALSE,		FALSE,		9},		160,	0,		240,	80},
+		{{FALSE,		TRUE,		0},		0,		240,	80,		320}};
 
 //
 static button_graphic_t noButton = { { TRUE, FALSE, 0 }, 0, 0, 0, 0 };
@@ -49,6 +53,8 @@ button_state_t buttonFinder(int16_t x, int16_t y) {
 
 void displayUNLOCKED() {
 	ILI9341_Fill(ILI9341_COLOR_GREEN);
+	ILI9341_Puts(87, 151, "FREE", &Font_11x18, ILI9341_COLOR_BLUE,
+			ILI9341_COLOR_GREEN);
 }
 
 void displaySETPIN() {
@@ -57,10 +63,16 @@ void displaySETPIN() {
 	for (i = 0; i < NUMBER_BUTTONS; i++) {
 		ILI9341_DrawRectangle(buttons[i].x1, buttons[i].y1, buttons[i].x2,
 				buttons[i].y2, ILI9341_COLOR_BLACK);
-		uint16_t x = (uint16_t) (buttons[i].x1 + 40);
-		uint16_t y = (uint16_t) (buttons[i].y1 + 40);
-		ILI9341_Putc(x, y, (char) (buttons[i].button.BUTTONVALUE + 48),
-				&Font_7x10, ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
+		uint16_t x = (uint16_t) (buttons[i].x1 + 35);
+		uint16_t y = (uint16_t) (buttons[i].y1 + 31);
+		if (buttons[i].button.CANCELBUTTON == TRUE) {
+			ILI9341_Puts((uint16_t) (x - 33), y, "CANCEL", &Font_11x18,
+					ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
+		} else {
+			ILI9341_Putc(x, y, (char) (buttons[i].button.BUTTONVALUE + 48),
+					&Font_11x18, ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
+
+		}
 	}
 }
 
@@ -69,20 +81,13 @@ void displayLOCKED() {
 	uint8_t i;
 	for (i = 0; i < 4; i++) {
 		char c = (char) (screenGetPin()[i] + 48);
-		ILI9341_Putc((uint16_t) (10 + 7 * i), 10, c, &Font_11x18,
-		ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
+		ILI9341_Putc((uint16_t) (153 + 11 * i), 10, c, &Font_11x18,
+		ILI9341_COLOR_BLUE, ILI9341_COLOR_RED);
 	}
-
-
-/*
-	for (int8_t i = 0; i < 4; i++) {
-		char c = (char) (newPin[i] + 48);
-		ILI9341_Putc((uint16_t) (10 + 7 * i), 10, c, &Font_11x18,
-		ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
-	}*/
-
-
-
+	ILI9341_Puts(10, 10, "You entered:", &Font_11x18, ILI9341_COLOR_BLUE,
+			ILI9341_COLOR_RED);
+	ILI9341_Puts(87, 151, "LOCKED", &Font_11x18, ILI9341_COLOR_BLUE,
+			ILI9341_COLOR_RED);
 }
 
 void displayENTERPIN() {
@@ -91,14 +96,14 @@ void displayENTERPIN() {
 	for (i = 0; i < NUMBER_BUTTONS; i++) {
 		ILI9341_DrawRectangle(buttons[i].x1, buttons[i].y1, buttons[i].x2,
 				buttons[i].y2, ILI9341_COLOR_BLACK);
-		uint16_t x = (uint16_t) (buttons[i].x1 + 40);
-		uint16_t y = (uint16_t) (buttons[i].y1 + 40);
+		uint16_t x = (uint16_t) (buttons[i].x1 + 35);
+		uint16_t y = (uint16_t) (buttons[i].y1 + 31);
 		if (buttons[i].button.CANCELBUTTON == TRUE) {
-			ILI9341_Puts((uint16_t)(x - 10), y, "CANCEL", &Font_7x10, ILI9341_COLOR_BLUE,
-					ILI9341_COLOR_WHITE);
+			ILI9341_Puts((uint16_t) (x - 33), y, "CANCEL", &Font_11x18,
+					ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
 		} else {
 			ILI9341_Putc(x, y, (char) (buttons[i].button.BUTTONVALUE + 48),
-					&Font_7x10, ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
+					&Font_11x18, ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
 
 		}
 	}

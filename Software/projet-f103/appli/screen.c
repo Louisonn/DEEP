@@ -45,6 +45,9 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 		if(actualPinIndex == 4){
 			return NEWPIN;
 		}
+		else if(isCancelled){
+			return CANCEL;
+		}
 		break;
 	case LOCKED:
 		if(entrance){
@@ -61,6 +64,9 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 		}
 		if(actualPinIndex == 4){
 			return NEWPIN;
+		}
+		else if(isCancelled){
+			return CANCEL;
 		}
 		break;
 	default:
@@ -85,11 +91,12 @@ void screenCheck(screen_mode_e state,uint32_t * pt ){
 		case LOCKED:
 			isTouched = TRUE;
 			break;
-		default: // Here is for ENTER/SET PIN (AND INIT BUT HOPEFULLY NEVER)
+		default: // Here is for ENTER/SET PIN (AND INIT BUT NORMALEMENT NEVER)
 		{
 			button_state_t newButton = buttonFinder(x, y);
 			if(newButton.CANCELBUTTON){
 				isCancelled = TRUE;
+				actualPinIndex = 0;
 			}
 			else if(newButton.NOBUTTON){
 				break;
@@ -109,7 +116,6 @@ void screenCheck(screen_mode_e state,uint32_t * pt ){
 
 int8_t * screenGetPin(){
 	actualPinIndex = 0;
-
 	return actualPin;
 }
 
