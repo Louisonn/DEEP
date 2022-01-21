@@ -7,15 +7,9 @@
 
 #include "button.h"
 
-#define NUMBER_BUTTONS 11
 
-typedef struct {
-	button_state_t button;
-	uint16_t x1;		//top left
-	uint16_t y1; 	//top left
-	uint16_t x2; 	//bottom right
-	uint16_t y2; 	//bottom right
-} button_graphic_t;
+
+
 
 //Tableau de boutons
 //		NOBUTTON		CANCEL		VALUE	X1		Y1		X2		Y2
@@ -51,61 +45,17 @@ button_state_t buttonFinder(int16_t x, int16_t y) {
 	return noButton.button;
 }
 
-void displayUNLOCKED() {
-	ILI9341_Fill(ILI9341_COLOR_GREEN);
-	ILI9341_Puts(87, 151, "FREE", &Font_11x18, ILI9341_COLOR_BLUE,
-			ILI9341_COLOR_GREEN);
+
+/*
+ * @brief	accesseur de bouton
+ * @param	index du bouton voulu
+ * @return	{@button_graphic_t} correspondant à l'index
+ */
+button_graphic_t getButton(uint8_t i){
+	return buttons[i];
 }
 
-void displaySETPIN() {
-	ILI9341_Fill(ILI9341_COLOR_WHITE);
-	uint8_t i;
-	for (i = 0; i < NUMBER_BUTTONS; i++) {
-		ILI9341_DrawRectangle(buttons[i].x1, buttons[i].y1, buttons[i].x2,
-				buttons[i].y2, ILI9341_COLOR_BLACK);
-		uint16_t x = (uint16_t) (buttons[i].x1 + 35);
-		uint16_t y = (uint16_t) (buttons[i].y1 + 31);
-		if (buttons[i].button.CANCELBUTTON == TRUE) {
-			ILI9341_Puts((uint16_t) (x - 33), y, "CANCEL", &Font_11x18,
-					ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
-		} else {
-			ILI9341_Putc(x, y, (char) (buttons[i].button.BUTTONVALUE + 48),
-					&Font_11x18, ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
 
-		}
-	}
-}
 
-void displayLOCKED() {
-	ILI9341_Fill(ILI9341_COLOR_RED);
-	uint8_t i;
-	for (i = 0; i < 4; i++) {
-		char c = (char) (screenGetPin()[i] + 48);
-		ILI9341_Putc((uint16_t) (153 + 11 * i), 10, c, &Font_11x18,
-		ILI9341_COLOR_BLUE, ILI9341_COLOR_RED);
-	}
-	ILI9341_Puts(10, 10, "You entered:", &Font_11x18, ILI9341_COLOR_BLUE,
-			ILI9341_COLOR_RED);
-	ILI9341_Puts(87, 151, "LOCKED", &Font_11x18, ILI9341_COLOR_BLUE,
-			ILI9341_COLOR_RED);
-}
 
-void displayENTERPIN() {
-	ILI9341_Fill(ILI9341_COLOR_WHITE);
-	uint8_t i;
-	for (i = 0; i < NUMBER_BUTTONS; i++) {
-		ILI9341_DrawRectangle(buttons[i].x1, buttons[i].y1, buttons[i].x2,
-				buttons[i].y2, ILI9341_COLOR_BLACK);
-		uint16_t x = (uint16_t) (buttons[i].x1 + 35);
-		uint16_t y = (uint16_t) (buttons[i].y1 + 31);
-		if (buttons[i].button.CANCELBUTTON == TRUE) {
-			ILI9341_Puts((uint16_t) (x - 33), y, "CANCEL", &Font_11x18,
-					ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
-		} else {
-			ILI9341_Putc(x, y, (char) (buttons[i].button.BUTTONVALUE + 48),
-					&Font_11x18, ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
-
-		}
-	}
-}
 

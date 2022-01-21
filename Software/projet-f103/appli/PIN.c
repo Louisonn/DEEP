@@ -7,8 +7,6 @@
 
 #include "PIN.h"
 
-#include "tft_ili9341/stm32f1_ili9341.h"
-
 
 #define PIN_MAX_NUMBER	2
 #define DEFAULT_PIN_CODE {0, 0, 0, 0}
@@ -55,11 +53,6 @@ bool_e pinAdd(int8_t * newPin) {
  * @return	TRUE si le pin est validé
  */
 bool_e pinUse(int8_t *pin) {
-	/*for (int8_t i = 0; i < 4; i++) {
-		char c = (char) (pins[1][i] + 48);
-		ILI9341_Putc((uint16_t) (10 + 15 * i), 10, c, &Font_11x18,
-		ILI9341_COLOR_BLUE, ILI9341_COLOR_WHITE);
-	}*/
 
 	uint8_t i;
 	for (i = 0; i < PIN_MAX_NUMBER; i++) {

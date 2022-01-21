@@ -8,8 +8,10 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 #include "macro_types.h"
-#include "tft_ili9341/stm32f1_ili9341.h"
-#include "screen.h"
+
+
+#define NUMBER_BUTTONS 11
+
 
 typedef struct{
 	bool_e NOBUTTON;
@@ -17,16 +19,23 @@ typedef struct{
 	int8_t BUTTONVALUE;
 }button_state_t;
 
+typedef struct {
+	button_state_t button;
+	uint16_t x1;		//top left
+	uint16_t y1; 	//top left
+	uint16_t x2; 	//bottom right
+	uint16_t y2; 	//bottom right
+} button_graphic_t;
+
 
 
 void buttonInit(void);
 
 button_state_t buttonFinder(int16_t, int16_t);
 
-void displayUNLOCKED(void);
-void displaySETPIN(void);
-void displayLOCKED(void);
-void displayENTERPIN(void);
+
+
+button_graphic_t getButton(uint8_t);
 
 
 #endif /* BUTTON_H_ */

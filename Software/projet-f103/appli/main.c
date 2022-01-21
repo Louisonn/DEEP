@@ -16,6 +16,7 @@
 #include "tft_ili9341/stm32f1_xpt2046.h"
 #include "PIN.h"
 #include "screen.h"
+#include "sensor.h"
 
 
 
@@ -66,9 +67,24 @@ int main(void) {
 	//On ajoute la fonction process_ms é la liste des fonctions appelées automatiquement chaque ms par la routine d'interruption du périphérique SYSTICK
 	Systick_add_callback_function(&process_ms);
 
+
+
+
+
+
+	screenInit();
+
 	while (1)	//boucle de tache de fond
 	{
-		state_machine();
+		  int16_t   i = test();
+		  char  buffer[4];
+		  sprintf(buffer, "%d", i);
+
+		ILI9341_Puts(10, 10, buffer, &Font_11x18,
+								ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
+
+
+		//state_machine();
 
 	}
 }
@@ -106,7 +122,6 @@ static void state_machine(void) {
 			state = LOCKED;
 		}
 			break;
-
 		default:
 			break;
 		}

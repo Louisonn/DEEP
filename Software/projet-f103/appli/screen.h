@@ -38,4 +38,11 @@ void screenCheck(screen_mode_e, uint32_t*);
 screen_event_e screenMain(screen_mode_e, bool_e);
 int8_t * screenGetPin(void);
 
+
+
+void displayUNLOCKED(void);
+void displaySETPIN(void);
+void displayLOCKED(void);
+void displayENTERPIN(void);
+
 #endif /* SCREEN_H_ */
