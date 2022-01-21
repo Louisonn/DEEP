@@ -1,5 +1,2 @@
-button.c:52:16:buttonFinder	24	static
-button.c:63:6:displayUNLOCKED	8	static
-button.c:67:6:displaySETPIN	32	static
-button.c:74:6:displayLOCKED	8	static
-button.c:78:6:displayENTERPIN	32	static
+button.c:37:16:buttonFinder	24	static
+button.c:54:18:getButton	24	static
