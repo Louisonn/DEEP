@@ -40,9 +40,6 @@ int8_t * screenGetPin(void);
 
 
 
-void displayUNLOCKED(void);
-void displaySETPIN(void);
-void displayLOCKED(void);
-void displayENTERPIN(void);
+
 
 #endif /* SCREEN_H_ */

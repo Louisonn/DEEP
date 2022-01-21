@@ -7,7 +7,10 @@
 
 #include "screen.h"
 
-
+void displayUNLOCKED(void);
+void displaySETPIN(void);
+void displayLOCKED(void);
+void displayENTERPIN(void);
 
 
 int8_t actualPin[4] = {0};

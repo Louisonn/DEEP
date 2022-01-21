@@ -60,6 +60,8 @@ int main(void) {
 	GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
 	BSP_GPIO_PinCfg(GPIOA, GPIO_PIN_15, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL,
 	GPIO_SPEED_FREQ_HIGH);
+	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_14, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL,
+	GPIO_SPEED_FREQ_HIGH);
 
 	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_12, GPIO_MODE_INPUT, GPIO_NOPULL,
 	GPIO_SPEED_FREQ_HIGH);
@@ -68,16 +70,20 @@ int main(void) {
 	Systick_add_callback_function(&process_ms);
 
 
+	sensorInit();
 
 
 
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 1);
 
 	screenInit();
 
 	while (1)	//boucle de tache de fond
 	{
-		  int16_t   i = test();
-		  char  buffer[4];
+
+
+		  int16_t i = test();
+		  char buffer[4];
 		  sprintf(buffer, "%d", i);
 
 		ILI9341_Puts(10, 10, buffer, &Font_11x18,
