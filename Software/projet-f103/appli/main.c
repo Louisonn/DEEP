@@ -71,24 +71,36 @@ int main(void) {
 
 
 	sensorInit();
-
-
-
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 1);
-
 	screenInit();
+
+
+
+	bool_e previousState = FALSE;
+	bool_e currentState;
 
 	while (1)	//boucle de tache de fond
 	{
+		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
+		if( currentState < previousState){
+			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+		}
+		previousState = currentState;
 
 
-		  int16_t i = test();
+
+
+
+
+
+
+
+		 /* int16_t i = test();
 		  char buffer[4];
 		  sprintf(buffer, "%d", i);
 
 		ILI9341_Puts(10, 10, buffer, &Font_11x18,
 								ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
-
+*/
 
 		//state_machine();
 

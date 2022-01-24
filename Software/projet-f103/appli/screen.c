@@ -24,7 +24,7 @@ uint8_t actualPinIndex = 0;
  */
 void screenInit(){
 	ILI9341_Init();
-	ILI9341_Rotate(ILI9341_Orientation_Portrait_2);
+	ILI9341_Rotate(ILI9341_Orientation_Portrait_1);
 	ILI9341_Fill(ILI9341_COLOR_GREEN);
 
 	XPT2046_init();
