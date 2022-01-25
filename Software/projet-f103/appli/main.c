@@ -6,7 +6,7 @@
  * @brief   Default main function.
  ******************************************************************************
  */
-#include "stm32f1xx_hal.h"
+
 #include "stm32f1_uart.h"
 #include "stm32f1_sys.h"
 #include "stm32f1_gpio.h"
@@ -74,18 +74,18 @@ int main(void) {
 	screenInit();
 
 
-
+/*
 	bool_e previousState = FALSE;
-	bool_e currentState;
+	bool_e currentState;*/
 
 	while (1)	//boucle de tache de fond
 	{
-		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
+		/*currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
 		if( currentState < previousState){
 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 		}
 		previousState = currentState;
-
+*/
 
 
 
@@ -102,7 +102,7 @@ int main(void) {
 								ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
 */
 
-		//state_machine();
+		state_machine();
 
 	}
 }
