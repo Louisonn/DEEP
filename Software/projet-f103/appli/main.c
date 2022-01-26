@@ -6,9 +6,11 @@
  * @brief   Default main function.
  ******************************************************************************
  */
-#include "stm32f1xx_hal.h"
+
 #include "stm32f1_uart.h"
 #include "stm32f1_sys.h"
+
+#include "stm32f1_hal.h"
 #include "stm32f1_gpio.h"
 #include "macro_types.h"
 #include "systick.h"
@@ -80,14 +82,15 @@ int main(void) {
 
 	while (1)	//boucle de tache de fond
 	{
-	/*	currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
+		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
+		/*currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
 		if( currentState < previousState){
 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 		}
 		previousState = currentState;
 
 
-*/
+
 
 
 

@@ -41,7 +41,7 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 	switch(state){
 	case UNLOCKED:
 		if(entrance){
-			//on unlock le verrou
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
 			displayUNLOCKED();
 		}
 		if(isTouched){
@@ -63,6 +63,7 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 		if(entrance){
 			//on lock le verrou
 			displayLOCKED();
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 1);
 		}
 		if(isTouched){
 			return TOUCHED;
@@ -167,7 +168,7 @@ void displayScreen(screen_mode_e state){
 
 void displayUNLOCKED() {
 	ILI9341_Fill(ILI9341_COLOR_GREEN);
-	ILI9341_Puts(87, 151, "FREE", &Font_11x18, ILI9341_COLOR_BLUE,
+	ILI9341_Puts(87, 151, "FREE", &Font_11x18, ILI9341_COLOR_WHITE,
 			ILI9341_COLOR_GREEN);
 }
 
@@ -197,18 +198,18 @@ void displaySETPIN() {
 
 void displayLOCKED() {
 	ILI9341_Fill(ILI9341_COLOR_RED);
-
+/*
 	uint8_t i;
 	for (i = 0; i < 4; i++)
 	{
 		char c = (char) (screenGetPin()[i] + 48);
 		ILI9341_Putc((uint16_t) (153 + 11 * i), 10, c, &Font_11x18,
-		ILI9341_COLOR_BLUE, ILI9341_COLOR_RED);
+		ILI9341_COLOR_YELLOW, ILI9341_COLOR_RED);
 	}
 
-	ILI9341_Puts(10, 10, "You entered:", &Font_11x18, ILI9341_COLOR_BLUE,
-			ILI9341_COLOR_RED);
-	ILI9341_Puts(87, 151, "LOCKED", &Font_11x18, ILI9341_COLOR_BLUE,
+	ILI9341_Puts(10, 10, "You entered:", &Font_11x18, ILI9341_COLOR_WHITE,
+			ILI9341_COLOR_RED);*/
+	ILI9341_Puts(87, 151, "LOCKED", &Font_11x18, ILI9341_COLOR_WHITE,
 			ILI9341_COLOR_RED);
 }
 
