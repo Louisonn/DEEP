@@ -76,20 +76,21 @@ int main(void) {
 	screenInit();
 
 
-
+/*
 	bool_e previousState = FALSE;
 	bool_e currentState;
-
+*/
 	while (1)	//boucle de tache de fond
 	{
+		/*
 		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
-		/*currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
+		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
 		if( currentState < previousState){
 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 		}
 		previousState = currentState;
 
-
+*/
 
 
 
