@@ -1,9 +1,0 @@
-screen.c:25:6:screenInit	8	static
-screen.c:39:16:screenMain	16	static
-screen.c:97:6:screenCheck	32	static
-screen.c:132:10:screenGetPin	4	static
-screen.c:145:6:displayScreen	16	static
-screen.c:169:6:displayUNLOCKED	16	static
-screen.c:175:6:displaySETPIN	56	static
-screen.c:199:6:displayLOCKED	16	static
-screen.c:216:6:displayENTERPIN	56	static
