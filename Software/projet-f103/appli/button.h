@@ -29,8 +29,6 @@ typedef struct {
 
 
 
-void buttonInit(void);
-
 button_state_t buttonFinder(int16_t, int16_t);
 
 

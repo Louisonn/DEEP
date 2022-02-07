@@ -1,4 +1,4 @@
-/*
+	/*
  * screen.c
  *
  *  Created on: 12 janv. 2022
@@ -41,7 +41,7 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 	switch(state){
 	case UNLOCKED:
 		if(entrance){
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0); //déverrouillage du verrou
 			displayUNLOCKED();
 		}
 		if(isTouched){
@@ -61,9 +61,9 @@ screen_event_e screenMain(screen_mode_e state, bool_e entrance){
 		break;
 	case LOCKED:
 		if(entrance){
-			//on lock le verrou
+
 			displayLOCKED();
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 1);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 1);  //verrouillage du verrou
 		}
 		if(isTouched){
 			return TOUCHED;
@@ -106,7 +106,7 @@ void screenCheck(screen_mode_e state,uint32_t * pt ){
 		case LOCKED:
 			isTouched = TRUE;
 			break;
-		default: // Here is for ENTER/SET PIN (AND INIT BUT NORMALEMENT NEVER)
+		default: // Here is for ENTER/SET PIN
 		{
 			button_state_t newButton = buttonFinder(x, y);
 			if(newButton.CANCELBUTTON){

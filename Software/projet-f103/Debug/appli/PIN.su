@@ -1,0 +1,3 @@
+PIN.c:22:6:pinInit	8	static
+PIN.c:35:8:pinAdd	24	static
+PIN.c:55:8:pinUse	24	static

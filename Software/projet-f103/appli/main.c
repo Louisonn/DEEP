@@ -9,32 +9,18 @@
 
 #include "stm32f1_uart.h"
 #include "stm32f1_sys.h"
-
-#include "stm32f1_hal.h"
+#include "stm32f1xx_hal.h"
 #include "stm32f1_gpio.h"
 #include "macro_types.h"
 #include "systick.h"
-#include "tft_ili9341/stm32f1_ili9341.h"
-#include "tft_ili9341/stm32f1_xpt2046.h"
 #include "PIN.h"
 #include "screen.h"
-#include "sensor.h"
 
 
 
 static void state_machine(void);
 
 
-
-
-void writeLED(bool_e b) {
-	HAL_GPIO_WritePin(LED_GREEN_GPIO, LED_GREEN_PIN, b);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, !b);
-}
-
-bool_e readButton(void) {
-	return !HAL_GPIO_ReadPin(BLUE_BUTTON_GPIO, BLUE_BUTTON_PIN);
-}
 
 static uint32_t t = 0;
 void process_ms(void) {
@@ -57,56 +43,17 @@ int main(void) {
 	//"Indique que les printf sortent vers le périphérique UART2."
 	SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
 
-	//Initialisation du port de la led Verte (carte Nucleo)
-	BSP_GPIO_PinCfg(LED_GREEN_GPIO, LED_GREEN_PIN, GPIO_MODE_OUTPUT_PP,
-	GPIO_NOPULL, GPIO_SPEED_FREQ_HIGH);
-	BSP_GPIO_PinCfg(GPIOA, GPIO_PIN_15, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL,
-	GPIO_SPEED_FREQ_HIGH);
-	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_14, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL,
-	GPIO_SPEED_FREQ_HIGH);
-
-	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_12, GPIO_MODE_INPUT, GPIO_NOPULL,
-	GPIO_SPEED_FREQ_HIGH);
-
 	//On ajoute la fonction process_ms é la liste des fonctions appelées automatiquement chaque ms par la routine d'interruption du périphérique SYSTICK
 	Systick_add_callback_function(&process_ms);
 
 
-	sensorInit();
-	screenInit();
+	//Initialisation de la pin pour controler le solénoïde en sortie
+	BSP_GPIO_PinCfg(GPIOB, GPIO_PIN_14, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL,GPIO_SPEED_FREQ_HIGH);
 
 
-/*
-	bool_e previousState = FALSE;
-	bool_e currentState;
-*/
 	while (1)	//boucle de tache de fond
 	{
-		/*
-		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
-		currentState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
-		if( currentState < previousState){
-			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-		}
-		previousState = currentState;
-
-*/
-
-
-
-
-
-
-
-		  int16_t i = test();
-		  char buffer[4];
-		  sprintf(buffer, "%d", i);
-
-		ILI9341_Puts(10, 10, buffer, &Font_11x18,
-								ILI9341_COLOR_BLUE,ILI9341_COLOR_WHITE);
-
-
-		//state_machine();
+		state_machine();
 
 	}
 }
@@ -121,7 +68,6 @@ static void state_machine(void) {
 	case INIT:
 		screenInit();
 		pinInit();
-		//LOCK_init();
 		state = UNLOCKED;
 		break;
 	case UNLOCKED:

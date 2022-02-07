@@ -1,0 +1,2 @@
+button.c:37:16:buttonFinder	24	static
+button.c:54:18:getButton	24	static
